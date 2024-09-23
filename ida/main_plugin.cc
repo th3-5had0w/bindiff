@@ -1004,8 +1004,10 @@ int idaapi ViewFlowGraphsAction::activate(action_activation_ctx_t* context) {
   if (chooser_selection.empty()) {
     return 0;
   }
-  Plugin::instance()->VisualDiff(chooser_selection.front(),
-                                 /*call_graph_diff=*/false);
+  for (auto choice : chooser_selection) {
+    Plugin::instance()->VisualDiff(choice,
+      /*call_graph_diff=*/false);
+  }
   return 1;
 }
 
